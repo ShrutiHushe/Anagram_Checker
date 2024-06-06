@@ -1,0 +1,76 @@
+<html>
+<head>
+<title> Anagram Checker App by Shruti </title>
+<style>
+	*{font-size:40px; font-family:Ink Free;}
+	body{background-color: lightblue;}
+</style>
+
+</head>
+<body>
+<center>
+	<h1>Anagram Checker App</h1>
+	<form onsubmit="mysort()">
+	<input type="text" placeholder="enter first string " id = "name1" />
+	<br/><br/>
+	<input type="text" placeholder="enter second string " id = "name2" />
+	<br/><br/>
+	<input type = "submit" value="Check" />
+	<br/></br/>
+	<h2 id="msg" />
+	</form>
+
+<script>
+	function mysort()
+	{
+		event.preventDefault();
+		let name1 = document.getElementById("name1");
+		let name2 = document.getElementById("name2");
+		let msg = document.getElementById("msg");
+
+		if(name1.value.trim() == "")
+		{
+			alert("string 1 cannot be empty")
+			msg.innerHTML = ""
+			name1.focus();
+			return;
+
+		}
+
+		if(name2.value.trim() == "")
+		{
+			alert("string 2 cannot be empty")
+			msg.innerHTML = ""
+			name2.focus();
+			return;
+
+		}
+		
+		let n1 = name1.value.toLowerCase();
+		let n2 = name2.value.toLowerCase();
+
+
+		let nn1 = n1.split("").sort().join("");
+		let nn2 = n2.split("").sort().join("");
+
+    		if (nn1 === nn2) {
+        		msg.innerHTML = "The strings are anagrams.";
+    		} else {
+       	 		msg.innerHTML = "The strings are not anagrams.";
+    		} 
+
+
+    		setTimeout(() => {
+        		name1.value = "";
+        		name2.value = "";
+        		msg.innerHTML = "";
+    		}, 5000);
+
+	}
+
+
+</script>
+
+</center>
+</body>
+</html>
